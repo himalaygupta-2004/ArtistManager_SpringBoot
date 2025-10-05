@@ -1,4 +1,4 @@
-package entity;
+package com.example.ArtistManager.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 @Setter
 @Entity
 public class ArtistEntity {
-
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Long trackId;
