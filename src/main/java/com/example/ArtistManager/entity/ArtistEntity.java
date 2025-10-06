@@ -1,9 +1,6 @@
 package com.example.ArtistManager.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +17,7 @@ public class ArtistEntity {
     private String trackName;
     private String trackComments;
     private Float trackRating;
+    @ElementCollection
     private ArrayList<String> trackArtist;
 
 }
