@@ -52,6 +52,15 @@ public class ArtistController {
         artistServiceImplementation.deleteTrackId(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/rating/{minRating}")
+    public ResponseEntity<List<ArtistEntity>> getTracksByRatingAbove(@PathVariable Float minRating) {
+        return new ResponseEntity<>(artistServiceImplementation.getTracksByRatingAbove(minRating), HttpStatus.OK);
+    }
+
+    @GetMapping("/artist/{artistName}")
+    public ResponseEntity<List<ArtistEntity>> getTracksByArtistName(@PathVariable String artistName) {
+        return new ResponseEntity<>(artistServiceImplementation.getTracksByArtistName(artistName), HttpStatus.OK);
+    }
 
 
 }
