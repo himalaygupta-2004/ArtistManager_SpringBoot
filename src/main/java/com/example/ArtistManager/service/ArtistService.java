@@ -15,5 +15,6 @@ public interface ArtistService {
     ArtistEntity createNewTrackId(NewArtisstDto newArtisstDto);
     void deleteTrackId(Long id);
     ArtistEntity updateTrackId(Long id,NewArtisstDto newArtisstDto);
-
+    List<ArtistEntity> getTracksByRatingAbove(Float rating);
+    List<ArtistEntity> getTracksByArtistName(String artistName);
 }
