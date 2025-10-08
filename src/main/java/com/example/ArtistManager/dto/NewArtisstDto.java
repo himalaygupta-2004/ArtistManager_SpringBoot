@@ -1,10 +1,13 @@
 package com.example.ArtistManager.dto;
 
+import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -13,5 +16,6 @@ public class NewArtisstDto {
     private String trackName;
     private String trackComments;
     private Float trackRating;
-    private ArrayList<String> trackArtist;
+    @ElementCollection
+    private List<String> trackArtist;
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,5 +61,37 @@ public class ArtistServiceImplementation implements ArtistService{
         existing.setTrackArtist(newArtisstDto.getTrackArtist());
 
         return artistEntityRepository.save(existing);
+    }
+    @Override
+    public List<ArtistEntity> getTracksByRatingAbove(Float rating) {
+        List<ArtistEntity> allTracks = artistEntityRepository.findAll();
+        List<ArtistEntity> result = new ArrayList<>();
+
+        for (ArtistEntity track : allTracks) {
+            if (track.getTrackRating() != null && track.getTrackRating() > rating) {
+                result.add(track);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public List<ArtistEntity> getTracksByArtistName(String artistName) {
+        List<ArtistEntity> allTracks = artistEntityRepository.findAll();
+        List<ArtistEntity> result = new ArrayList<>();
+
+        for (ArtistEntity track : allTracks) {
+            if (track.getTrackArtist() != null) {
+                for (String artist : track.getTrackArtist()) {
+                    if (artist.equalsIgnoreCase(artistName)) {
+                        result.add(track);
+                        break; // stop checking once artist found
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 }
